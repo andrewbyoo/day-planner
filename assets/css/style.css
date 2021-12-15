@@ -69,3 +69,25 @@ textarea {
   font-size: 20px;
   transition: all 0.3s ease-in-out;
 }
+
+.middleColumn {
+  background-color: #dddddd;
+}
+
+.margin1px {
+  margin-bottom: 1px;
+}
+
+.padding5px {
+  padding-top: 5px;
+}
+
+.relativePosition {
+  position: relative;
+}
+
+.verticalCenter {
+  position: absolute;
+  top: 40%;
+  transform: translateX(-50%);
+}
