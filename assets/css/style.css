@@ -82,8 +82,10 @@ textarea {
   padding-top: 5px;
 }
 
-.absoluteCenter {
-  position: absolute;
-  top: 40%;
-  transform: translateX(-50%);
+.bi-sd-card {
+  font-size: 30px !important;
+}
+
+.bi-sd-card:hover::before {
+  content: "\f654";
 }
