@@ -82,7 +82,7 @@ textarea {
   padding-top: 5px;
 }
 
-.verticalCenter {
+.absoluteCenter {
   position: absolute;
   top: 40%;
   transform: translateX(-50%);
