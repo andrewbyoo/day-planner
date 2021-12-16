@@ -51,7 +51,7 @@ for (var i = 0; i < inputStorage.length; i++) {
   var retrievedId = inputStorage[i].id;
   var retrievedValue = inputStorage[i].value;
   var thisId = document.getElementById(retrievedId);
-  thisId.setAttribute("value", retrievedValue);
+  thisId.value() = retrievedValue;
 
   if (retrievedValue != "") {
     thisId.setAttribute('disabled', true);
