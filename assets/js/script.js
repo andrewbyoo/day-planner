@@ -1,28 +1,30 @@
+// Global variables for date and local storage
 var currentDate = moment().format('dddd, MMMM Do')
 var inputStorage = JSON.parse(localStorage.getItem(currentDate));
 
+// If there is no data in the current day's local storage, run the clearLocalStorage function
 if (inputStorage == null){
-  clearLocalStorage()
+  clearLocalStorage();
 }
 
 // Calls function to display time on screen and updates thereafter every second
-displayTime()
+displayTime();
 function displayTime() {
   $('#currentDay').text(currentDate);
 }
 setInterval(displayTime, 1000);
 
 // Calls function to updates colors of the time slots every second depending on if the time slot has passed
-updateColors()
+updateColors();
 function updateColors() {
-  var rows = $('.row')
+  var rows = $('.row');
   var currentTimeString = moment().format('H');
   var currentTime = parseInt(currentTimeString);
 
   // Array that checks which time slots have passed
   Array.from(rows).forEach(row => {
     var rowHour = row.dataset.hour;
-    var rowChildren = row.children
+    var rowChildren = row.children;
     var rowInput = rowChildren[1];
 
     // If the time slot has passed, sets background to grey
@@ -66,9 +68,6 @@ $('button').click(function(event) {
   var plannerItemId = plannerItem.attr('id');
   var plannerItemText = plannerItem.val();
 
-  console.log(plannerItemText);
-  console.log(plannerItemId);
-
   // If nothing was input into the time slot, break out of the button click function
   if (!plannerItem.val()) {
     console.log('No planner entry has been made.');
@@ -80,7 +79,7 @@ $('button').click(function(event) {
 
     inputStorage.forEach(function(inputStorage) {
       if (newInput.id === inputStorage.id) {
-        inputStorage.value = newInput.value
+        inputStorage.value = newInput.value;
       };
     });
 
