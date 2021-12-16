@@ -64,7 +64,7 @@ $('button').click(function(event) {
   var btnClicked = $(event.target);
 
   // Defines the input element and id of sibling of the button that was pressed
-  var plannerItem = btnClicked.siblings('input');
+  var plannerItem = btnClicked.siblings('textarea');
   var plannerItemId = plannerItem.attr('id');
   var plannerItemText = plannerItem.val();
 
@@ -92,14 +92,14 @@ $('button').click(function(event) {
 
 // Unlocks the input fields (Code to be input to also clear local storage)
 $('#resetBtn').click(function() {
-  $('input[name="planner-input"]').removeAttr('disabled');
+  $('textarea[name="planner-input"]').removeAttr('disabled');
   clearLocalStorage();
 })
 
 // Clears local storage and sets up new local storage for the current day
 function clearLocalStorage() {
   localStorage.clear();
-  $('input').val("");
+  $('textarea').val("");
   inputStorage = [
     {"id": "input1", "value": ""},
     {"id": "input2", "value": ""},
@@ -115,4 +115,3 @@ function clearLocalStorage() {
   localStorage.setItem(currentDate, stringifiedJSON);
   return
 }
-
