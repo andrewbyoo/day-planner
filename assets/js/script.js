@@ -4,10 +4,11 @@ if (inputStorage == null){
   clearLocalStorage()
 }
 
+var currentDate = moment().format('dddd, MMMM Do')
+
 // Calls function to display time on screen and updates thereafter every second
 displayTime()
 function displayTime() {
-  currentDate = moment().format('dddd, MMMM Do h:mm:ss A')
   $('#currentDay').text(currentDate);
 }
 setInterval(displayTime, 1000);
