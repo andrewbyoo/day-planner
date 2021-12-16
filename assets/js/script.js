@@ -6,7 +6,8 @@ function displayTime() {
 }
 setInterval(displayTime, 1000);
 
-// Updates colors of the time slots every second depending on if the time slot has passed
+// Calls function to updates colors of the time slots every second depending on if the time slot has passed
+updateColors()
 function updateColors() {
   var rows = $('.row')
   var currentTimeString = moment().format('H');
@@ -41,18 +42,20 @@ $('button').click(function(event) {
   event.preventDefault();
   var btnClicked = $(event.target);
 
-  // Defines the input and section element sibling of the button that was pressed
-  var plannerTimeSlot = btnClicked.siblings('section');
+  // Defines the input element and id of sibling of the button that was pressed
   var plannerItem = btnClicked.siblings('input');
+  var plannerItemId = plannerItem.attr('id');
 
-  console.log(plannerTimeSlot.text())
   console.log(plannerItem.val());
+  console.log(plannerItemId);
 
   // If nothing was input into the time slot, break out of the button click function
   if (!plannerItem.val()) {
     console.log('No planner entry has been made.');
     return
   } else {
+
+
 
     // If an item was input into the text field, lock the input field
     plannerItem.prop('disabled', true);
