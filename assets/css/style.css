@@ -89,3 +89,13 @@ textarea {
 .bi-sd-card:hover::before {
   content: "\f654";
 }
+
+.btn-primary {
+  background-color: #06aed5;
+  margin-top: 5px;
+}
+
+.jumbotron {
+  background-color: #06aed5;
+}
+
