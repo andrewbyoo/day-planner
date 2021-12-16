@@ -1,10 +1,9 @@
-var inputStorage = JSON.parse(localStorage.getItem("inputStorage"));
+var currentDate = moment().format('dddd, MMMM Do')
+var inputStorage = JSON.parse(localStorage.getItem(currentDate));
 
 if (inputStorage == null){
   clearLocalStorage()
 }
-
-var currentDate = moment().format('dddd, MMMM Do')
 
 // Calls function to display time on screen and updates thereafter every second
 displayTime()
@@ -46,9 +45,9 @@ setInterval(updateColors, 1000);
 
 // For loop that retrieves local storage values from previous browser instance and displays it in their respective time slots
 for (var i = 0; i < inputStorage.length; i++) {
-  inputStorage = JSON.parse(localStorage.getItem("inputStorage"));
-  var retrievedId = inputStorage[i].idtest;
-  var retrievedValue = inputStorage[i].valuetest;
+  inputStorage = JSON.parse(localStorage.getItem(currentDate));
+  var retrievedId = inputStorage[i].id;
+  var retrievedValue = inputStorage[i].value;
   var thisId = document.getElementById(retrievedId);
   thisId.setAttribute("value", retrievedValue);
 }
@@ -71,19 +70,19 @@ $('button').click(function(event) {
     console.log('No planner entry has been made.');
     return
   } else {
-    inputStorage = JSON.parse(localStorage.getItem("inputStorage"));
+    inputStorage = JSON.parse(localStorage.getItem(currentDate));
     console.log(inputStorage)
 
-    var newInput = {"idtest": plannerItemId, "valuetest": plannerItemText};
-    console.log(newInput.idtest)
+    var newInput = {"id": plannerItemId, "value": plannerItemText};
+    console.log(newInput.id)
 
     inputStorage.forEach(function(inputStorage) {
-      if (newInput.idtest === inputStorage.idtest) {
-        inputStorage.valuetest = newInput.valuetest
+      if (newInput.id === inputStorage.id) {
+        inputStorage.value = newInput.value
       };
     });
 
-    localStorage.setItem("inputStorage", JSON.stringify(inputStorage));
+    localStorage.setItem(currentDate, JSON.stringify(inputStorage));
 
     // If an item was input into the text field, lock the input field
     plannerItem.prop('disabled', true);
@@ -96,22 +95,22 @@ $('#resetBtn').click(function() {
   clearLocalStorage()
 })
 
-
+// Clears local storage and sets up new local storage for the current day
 function clearLocalStorage() {
+  Storage.clear()
   inputStorage = [
-    {"idtest": "input1", "valuetest": ""},
-    {"idtest": "input2", "valuetest": ""},
-    {"idtest": "input3", "valuetest": ""},
-    {"idtest": "input4", "valuetest": ""},
-    {"idtest": "input5", "valuetest": ""},
-    {"idtest": "input6", "valuetest": ""},
-    {"idtest": "input7", "valuetest": ""},
-    {"idtest": "input8", "valuetest": ""},
-    {"idtest": "input9", "valuetest": ""}
+    {"id": "input1", "value": ""},
+    {"id": "input2", "value": ""},
+    {"id": "input3", "value": ""},
+    {"id": "input4", "value": ""},
+    {"id": "input5", "value": ""},
+    {"id": "input6", "value": ""},
+    {"id": "input7", "value": ""},
+    {"id": "input8", "value": ""},
+    {"id": "input9", "value": ""}
   ];
   var stringifiedJSON = JSON.stringify(inputStorage);
-  localStorage.setItem("inputStorage", stringifiedJSON);
-
+  localStorage.setItem(currentDate, stringifiedJSON);
   return
 }
 
