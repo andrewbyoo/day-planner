@@ -43,10 +43,13 @@ function updateColors() {
 }
 setInterval(updateColors, 1000);
 
+// For loop that retrieves local storage values from previous browser instance and displays it in their respective time slots
 for (var i = 0; i < inputStorage.length; i++) {
   inputStorage = JSON.parse(localStorage.getItem("inputStorage"));
-  var retrievedId = inputStorage[i].idtest
-  console.log(retrievedId)
+  var retrievedId = inputStorage[i].idtest;
+  var retrievedValue = inputStorage[i].valuetest;
+  var thisId = document.getElementById(retrievedId);
+  thisId.setAttribute("value", retrievedValue);
 }
 
 // Runs function on button element click
