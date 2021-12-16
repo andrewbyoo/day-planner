@@ -1,6 +1,7 @@
 var currentDate = moment().format('dddd, MMMM Do');
 var currentTime = moment().format('H');
 $('#currentDay').text(currentDate);
+console.log(currentTime)
 
 var rows = $('.row')
 console.log(rows)
@@ -9,15 +10,18 @@ console.log(row1.dataset.hour)
 
 Array.from(rows).forEach(row => {
   var rowHour = row.dataset.hour;
-console.log(rowHour)
+  var rowChildren = row.children
+  var rowInput = rowChildren[1];
 
-
-// Not working, seems i can't target individual row
-  if(currentTime > rowHour) {
-    row.children(1).css('background-color', '#dddddd')
+  if (currentTime > rowHour) {
+    rowInput.style.backgroundColor = 'rgb(255, 255, 255)';
   }
 
-  if (currentTime = rowHour) {
-    row.children(1).css('background-color', '#FF7575')
+  if (currentTime == rowHour) {
+    rowInput.style.backgroundColor = 'rgb(255, 117, 117)';
+  }
+
+  if (currentTime < rowHour) {
+    rowInput.style.backgroundColor = 'rgb(127, 255, 123)';
   }
 })
