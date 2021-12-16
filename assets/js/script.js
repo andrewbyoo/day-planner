@@ -50,6 +50,10 @@ for (var i = 0; i < inputStorage.length; i++) {
   var retrievedValue = inputStorage[i].value;
   var thisId = document.getElementById(retrievedId);
   thisId.setAttribute("value", retrievedValue);
+
+  if (retrievedValue != "") {
+    thisId.setAttribute('disabled', true);
+  }
 }
 
 // Runs function on button element click
@@ -71,10 +75,8 @@ $('button').click(function(event) {
     return
   } else {
     inputStorage = JSON.parse(localStorage.getItem(currentDate));
-    console.log(inputStorage)
 
     var newInput = {"id": plannerItemId, "value": plannerItemText};
-    console.log(newInput.id)
 
     inputStorage.forEach(function(inputStorage) {
       if (newInput.id === inputStorage.id) {
@@ -91,13 +93,14 @@ $('button').click(function(event) {
 
 // Unlocks the input fields (Code to be input to also clear local storage)
 $('#resetBtn').click(function() {
-  $('input[name="planner-input"]').removeAttr('disabled')
-  clearLocalStorage()
+  $('input[name="planner-input"]').removeAttr('disabled');
+  clearLocalStorage();
 })
 
 // Clears local storage and sets up new local storage for the current day
 function clearLocalStorage() {
-  Storage.clear()
+  localStorage.clear();
+  $('input').val("");
   inputStorage = [
     {"id": "input1", "value": ""},
     {"id": "input2", "value": ""},
