@@ -1,5 +1,8 @@
+var currentDate = moment().format('dddd, MMMM Do h:mm:ss A')
+  $('#currentDay').text(currentDate);
+
 function displayTime() {
-  var currentDate = moment().format('dddd, MMMM Do h:mm:ss A')
+  currentDate = moment().format('dddd, MMMM Do h:mm:ss A')
   $('#currentDay').text(currentDate);
 }
 setInterval(displayTime, 1000);
