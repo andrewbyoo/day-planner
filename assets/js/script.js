@@ -1,3 +1,5 @@
+var inputStorage = [];
+
 // Calls function to display time on screen and updates thereafter every second
 displayTime()
 function displayTime() {
@@ -37,10 +39,13 @@ function updateColors() {
 }
 setInterval(updateColors, 1000);
 
-for (var i = 0; i < localStorage.length; i++) {
-  const element = array[i];
+// for (var i = 0; i < localStorage.length; i++) {
+//   storageKey = localStorage.key(i);
+//   storageValue = localStorage.getItem(localStorage.key(i));
 
-}
+//   console.log(storageKey);
+//   console.log(storageValue);
+// }
 
 // Runs function on button element click
 $('button').click(function(event) {
@@ -50,9 +55,9 @@ $('button').click(function(event) {
   // Defines the input element and id of sibling of the button that was pressed
   var plannerItem = btnClicked.siblings('input');
   var plannerItemId = plannerItem.attr('id');
-  var plannerItemText = plannerItem.val()
+  var plannerItemText = plannerItem.val();
 
-  console.log(plannerItem.val());
+  console.log(plannerItemText);
   console.log(plannerItemId);
 
   // If nothing was input into the time slot, break out of the button click function
@@ -60,7 +65,19 @@ $('button').click(function(event) {
     console.log('No planner entry has been made.');
     return
   } else {
-    localStorage.setItem(plannerItemId, plannerItemText);
+    inputStorage = JSON.parse(localStorage.getItem("inputStorage"));
+    console.log(inputStorage)
+
+    var newInput = {"idtest": plannerItemId, "valuetest": plannerItemText};
+    console.log(newInput.idtest)
+
+    inputStorage.forEach(function(inputStorage) {
+      if (newInput.idtest === inputStorage.idtest) {
+        inputStorage.valuetest = newInput.valuetest
+      };
+    });
+
+    localStorage.setItem("inputStorage", JSON.stringify(inputStorage));
 
     // If an item was input into the text field, lock the input field
     plannerItem.prop('disabled', true);
@@ -75,15 +92,20 @@ $('#resetBtn').click(function() {
 
 
 function clearLocalStorage() {
-  localStorage.setItem('input1', '');
-  localStorage.setItem('input2', '');
-  localStorage.setItem('input3', '');
-  localStorage.setItem('input4', '');
-  localStorage.setItem('input5', '');
-  localStorage.setItem('input6', '');
-  localStorage.setItem('input7', '');
-  localStorage.setItem('input8', '');
-  localStorage.setItem('input9', '');
+  inputStorage = [
+    {"idtest": "input1", "valuetest": ""},
+    {"idtest": "input2", "valuetest": ""},
+    {"idtest": "input3", "valuetest": ""},
+    {"idtest": "input4", "valuetest": ""},
+    {"idtest": "input5", "valuetest": ""},
+    {"idtest": "input6", "valuetest": ""},
+    {"idtest": "input7", "valuetest": ""},
+    {"idtest": "input8", "valuetest": ""},
+    {"idtest": "input9", "valuetest": ""}
+  ];
+  var stringifiedJSON = JSON.stringify(inputStorage);
+  localStorage.setItem("inputStorage", stringifiedJSON);
+
   return
 }
 
