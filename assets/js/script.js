@@ -1,12 +1,9 @@
 var currentDate = moment().format('dddd, MMMM Do');
-var currentTime = moment().format('H');
+var currentTimeString = moment().format('H');
+var currentTime = parseInt(currentTimeString);
 $('#currentDay').text(currentDate);
-console.log(currentTime)
 
 var rows = $('.row')
-console.log(rows)
-var row1 = rows[0]
-console.log(row1.dataset.hour)
 
 Array.from(rows).forEach(row => {
   var rowHour = row.dataset.hour;
@@ -14,7 +11,7 @@ Array.from(rows).forEach(row => {
   var rowInput = rowChildren[1];
 
   if (currentTime > rowHour) {
-    rowInput.style.backgroundColor = 'rgb(255, 255, 255)';
+    rowInput.style.backgroundColor = 'rgb(221, 221, 221)';
   }
 
   if (currentTime == rowHour) {
