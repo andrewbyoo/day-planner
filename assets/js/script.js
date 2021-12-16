@@ -1,4 +1,8 @@
-var inputStorage = [];
+var inputStorage = JSON.parse(localStorage.getItem("inputStorage"));
+
+if (inputStorage == null){
+  clearLocalStorage()
+}
 
 // Calls function to display time on screen and updates thereafter every second
 displayTime()
@@ -39,13 +43,11 @@ function updateColors() {
 }
 setInterval(updateColors, 1000);
 
-// for (var i = 0; i < localStorage.length; i++) {
-//   storageKey = localStorage.key(i);
-//   storageValue = localStorage.getItem(localStorage.key(i));
-
-//   console.log(storageKey);
-//   console.log(storageValue);
-// }
+for (var i = 0; i < inputStorage.length; i++) {
+  inputStorage = JSON.parse(localStorage.getItem("inputStorage"));
+  var retrievedId = inputStorage[i].idtest
+  console.log(retrievedId)
+}
 
 // Runs function on button element click
 $('button').click(function(event) {
