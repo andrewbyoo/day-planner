@@ -37,6 +37,11 @@ function updateColors() {
 }
 setInterval(updateColors, 1000);
 
+for (var i = 0; i < localStorage.length; i++) {
+  const element = array[i];
+
+}
+
 // Runs function on button element click
 $('button').click(function(event) {
   event.preventDefault();
@@ -45,6 +50,7 @@ $('button').click(function(event) {
   // Defines the input element and id of sibling of the button that was pressed
   var plannerItem = btnClicked.siblings('input');
   var plannerItemId = plannerItem.attr('id');
+  var plannerItemText = plannerItem.val()
 
   console.log(plannerItem.val());
   console.log(plannerItemId);
@@ -54,8 +60,7 @@ $('button').click(function(event) {
     console.log('No planner entry has been made.');
     return
   } else {
-
-
+    localStorage.setItem(plannerItemId, plannerItemText);
 
     // If an item was input into the text field, lock the input field
     plannerItem.prop('disabled', true);
@@ -65,4 +70,20 @@ $('button').click(function(event) {
 // Unlocks the input fields (Code to be input to also clear local storage)
 $('#resetBtn').click(function() {
   $('input[name="planner-input"]').removeAttr('disabled')
+  clearLocalStorage()
 })
+
+
+function clearLocalStorage() {
+  localStorage.setItem('input1', '');
+  localStorage.setItem('input2', '');
+  localStorage.setItem('input3', '');
+  localStorage.setItem('input4', '');
+  localStorage.setItem('input5', '');
+  localStorage.setItem('input6', '');
+  localStorage.setItem('input7', '');
+  localStorage.setItem('input8', '');
+  localStorage.setItem('input9', '');
+  return
+}
+
