@@ -17,7 +17,7 @@ The following are the features that were implemented:
 * If inputs were done on a previous day, text fields will be cleared for the new day automatically.
 
 ## Link
-https://andrewyoo93.github.io/day-planner/
+https://andrewbyoo.github.io/day-planner/
 
 
 ## License
